@@ -7,5 +7,3 @@
 7,Leonelle,Jellico,ljellico6@163.com,Female,136.236.203.25,3555833530848735,810-146-1080,PO Box 72537
 8,Salim,Mazella,smazella7@guardian.co.uk,Male,28.102.89.250,5602214223043918,180-928-2096,Suite 7
 9,Bernard,O'Doohaine,bodoohaine8@shutterfly.com,Male,2.50.120.32,3578589942799956,762-334-3783,Apt 1852
-
-less -N --use-color
