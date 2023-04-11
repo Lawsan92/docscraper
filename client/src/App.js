@@ -134,7 +134,7 @@ export const App = () => {
         </div>
         <div className='scraper_dash'>
           <input type="file" name="file" onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}}/>
-          <button onClick={() => {grepFile(doc)}}>Filter</button>
+          <button onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
           <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions} configureParams={configureParams} grepParams={grepParams}/>
         </div>
       </div>
