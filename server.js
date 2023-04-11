@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { getS3List, getS3Object } = require('./AWS.js');
-const matchEmails = require('./grep.js');
+const { matchEmails, GrepClass } = require('./grep.js');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client/dist')));
@@ -21,19 +21,16 @@ app.get('/getFiles', (req, res) => {
   //   .then((data) => {
   //     console.log('data:', data);
   //   });
-
   getS3Object()
     .then((data) => {
       res.send(data);
     })
-  // res.send({a: 'text'})
 });
 
 app.post('/grepFiles', (req, res) => {
-  console.log('req:', req.body.data);
-   const file = req.body;
-  res.send(matchEmails(file));
-   module.exports = file;
+   const [file, grepKey] = [req.body, Object.keys(req.body.options)[0]];
+   console.log('[file, grepKey]:', [file, grepKey]);
+   res.send(GrepClass[grepKey](file));
 })
 
 app.listen(3000, (err) => {

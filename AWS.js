@@ -28,7 +28,7 @@ const getS3Object = async () => {
     const response = await s3Client.send(command);
     // The Body object also has 'transformToByteArray' and 'transformToWebStream' methods.
     const str = await response.Body.transformToString();
-    console.log('object:', str, typeof str);
+    // console.log('object:', str, typeof str);
     return str;
   } catch (err) {
     console.error(err);
