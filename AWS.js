@@ -11,7 +11,9 @@ const s3Client = new S3Client(config);
 
 // -GET image urls from S3 bucket
 const getS3List = async () => {
-  const command = new ListObjectsV2Command({Bucket:'lawstextfilestorage'});
+  const command = new ListObjectsV2Command({
+    Bucket:'lawstextfilestorage'
+  });
   const response = await s3Client.send(command);
   return response;
 }

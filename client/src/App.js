@@ -12,7 +12,25 @@ export const App = () => {
     .then((response) => {
       console.log('response:', response.data);
       const fileData = response.data;
-      getFile(fileData);
+      // getFile(fileData);
+    })
+  }
+
+  const uploadFile = (e) => {
+    let file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      let fileContent = e.target.result;
+      getFile(fileContent);
+    };
+    reader.readAsText(file);
+  }
+
+  const grepFile = (e) => {
+    axios({
+      url: './grepFiles',
+      method: 'post',
+      data: e
     })
   }
 
@@ -27,6 +45,7 @@ export const App = () => {
       <div className='scraper_before-page'>
         <p>{file}</p>
       </div>
+      <input type="file" name="file" onChange={(e) => { uploadFile(e); grepFile(e.target.files[0])}}/>
       <button className='scraper_upload-btn'>Upload</button>
     </div>
   );

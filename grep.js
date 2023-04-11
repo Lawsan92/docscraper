@@ -1,6 +1,7 @@
 const { readFileSync } = require('fs');
 const testFile = readFileSync('./test.txt', {encoding: 'utf8'});
 
+
 // console.log('testFile:', testFile);
 // console.log('emailGrep:', ...emailGrep)
 
@@ -17,7 +18,11 @@ const matchEmails = (file) => {
 
 console.log('emails:', matchEmails(testFile));
 
+module.exports = matchEmails;
+
 // REFERENCES
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator
+// https://www.pluralsight.com/guides/uploading-files-with-reactjs
+// https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
