@@ -10,7 +10,7 @@ export const App = () => {
       method: 'get'
     })
     .then((response) => {
-      console.log('response:', response.data);
+      // console.log('response:', response.data);
       const fileData = response.data;
       // getFile(fileData);
     })
@@ -26,15 +26,26 @@ export const App = () => {
     reader.readAsText(file);
   }
 
-  const grepFile = (e) => {
-    axios({
-      url: './grepFiles',
-      method: 'post',
-      data: e
-    })
+  const grepFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      let fileContent = e.target.result;
+      console.log('fileContent:', fileContent, typeof fileContent);
+      axios({
+        url: './grepFiles',
+        method: 'post',
+        data: {data: fileContent}
+      })
+      .then((response) => {
+        console.log('response:', response.data);
+        getGrep(response.data);
+      })
+    };
+    reader.readAsText(file);
   }
 
   const [file, getFile] = useState('');
+  const [grepData, getGrep] = useState('');
 
   useEffect(() => {
     fetchFile();
@@ -42,10 +53,15 @@ export const App = () => {
 
   return (
     <div className='scraper_container'>
-      <div className='scraper_before-page'>
-        <p>{file}</p>
+      <div className='scraper_pages'>
+        <div className='scraper_before-page'>
+          <p>{file}</p>
+        </div>
+        <div className='scraper_after-page'>
+          <p style={{color: 'red'}}>{grepData}</p>
+        </div>
       </div>
-      <input type="file" name="file" onChange={(e) => { uploadFile(e); grepFile(e.target.files[0])}}/>
+      <input type="file" name="file" onChange={(e) => { uploadFile(e); grepFile(e.target.files[0]);}}/>
       <button className='scraper_upload-btn'>Upload</button>
     </div>
   );
