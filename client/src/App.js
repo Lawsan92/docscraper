@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 const axios = require('axios');
 
-export const Options = ({ optionsClicked, handleClick, setOptions }) => {
+export const Landing = ({ setLanding }) => {
+  return (
+    <div className='scraper_landing' onClick={() => {setLanding(false)}}>
+      <div className='scraper_landing-logo'>
+        <img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681251277/Screen_Shot_2023-04-11_at_17.07.44_haqpxe.jpg'style={{height: '40vh', borderRadius: '50%'}}/>
+        <h1 style={{color: '#ffce30'}}>DocuScraper</h1>
+      </div>
+    </div>
+  )
+}
+
+export const Options = ({ optionsClicked, handleClick, setOptions, configureParams, grepParams }) => {
 
   if (!optionsClicked) {
     return (
@@ -34,7 +45,7 @@ export const Options = ({ optionsClicked, handleClick, setOptions }) => {
       </li>
       <li>
         <label>
-          <input type='radio' value='line numbers' onClick={(e) => {setOptions(e.target.value)}}/>
+          <input type='radio' value='line numbers' onClick={(e) => {configureParams({...grepParams, ['line numbers']: true})}}/>
           line numbers
         </label>
       </li>
@@ -51,6 +62,7 @@ export const App = () => {
   const [optionsClicked, openOptions] = useState(false);
   const [doc, getDoc] = useState('');
   const [grepParams, configureParams] = useState({});
+  const [landing, setLanding] = useState(true);
 
   useEffect(() => {
     fetchFile();
@@ -107,21 +119,25 @@ export const App = () => {
     configureParams({...grepParams, [param]: param})
   }
 
-  return (
-    <div className='scraper_container'>
-      <div className='scraper_pages'>
-        <div className='scraper_before-page'>
-          <p>{file}</p>
+  if (landing) {
+    return <Landing setLanding={setLanding}/>
+  } else {
+    return (
+      <div className='scraper_container'>
+        <div className='scraper_pages'>
+          <div className='scraper_before-page'>
+            <p>{file}</p>
+          </div>
+          <div className='scraper_after-page'>
+            <p style={{color: 'red'}}>{grepData}</p>
+          </div>
         </div>
-        <div className='scraper_after-page'>
-          <p style={{color: 'red'}}>{grepData}</p>
+        <div className='scraper_dash'>
+          <input type="file" name="file" onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}}/>
+          <button onClick={() => {grepFile(doc)}}>Filter</button>
+          <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions} configureParams={configureParams} grepParams={grepParams}/>
         </div>
       </div>
-      <div className='scraper_dash'>
-        <input type="file" name="file" onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}}/>
-        <button onClick={() => {grepFile(doc)}}>Filter</button>
-        <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions}/>
-      </div>
-    </div>
-  );
+    );
+  }
 }

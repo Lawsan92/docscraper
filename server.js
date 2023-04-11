@@ -30,7 +30,7 @@ app.get('/getFiles', (req, res) => {
 app.post('/grepFiles', (req, res) => {
    const [file, grepKey] = [req.body, Object.keys(req.body.options)[0]];
    console.log('[file, grepKey]:', [file, grepKey]);
-   res.send(GrepClass[grepKey](file));
+   res.send(GrepClass[grepKey](file, Object.keys(req.body.options)[1]));
 })
 
 app.listen(3000, (err) => {

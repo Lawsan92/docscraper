@@ -8,6 +8,27 @@ body{
   font-family: 'SF Pro Display', sans-serif;
 }
 
+.scraper_landing {
+  background-color: #f4f8fb;
+  color: black;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scraper_landing-logo {
+  /* background-image: url('https://res.cloudinary.com/darp0mj9i/image/upload/v1681250924/Screen_Shot_2023-04-11_at_17.07.44_piarqm.jpg');
+  background-size: cover; */
+  height: 30vh;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .scraper_container {
   display: flex;
   justify-content: center;
