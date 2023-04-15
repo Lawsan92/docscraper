@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 const axios = require('axios');
+import '../dist/styles.scss';
 
 export const Landing = ({ setLanding }) => {
   return (
@@ -23,7 +24,7 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
   }
 
   return (
-    <div className='scraper_options-open' onClick={handleClick}>
+    <div className='scraper_options-open'>
     <ul style={{listStyle: 'none'}}>
       <li>
         <label>
@@ -50,6 +51,7 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
         </label>
       </li>
     </ul>
+    <button onClick={handleClick}>x</button>
   </div>
   );
 };
