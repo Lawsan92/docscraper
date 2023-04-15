@@ -7,6 +7,7 @@ class Sort {
     let arr = [];
     let line = '';
     for (let i = 0; i < file.length; i ++) {
+      line += file[i];
       if (file[i] === '\n') {
         arr.push(line);
         line = '';
@@ -36,12 +37,10 @@ class Sort {
         }
       pt = 0;
     }
-    // console.log('arr:', arr);
     return arr;
   }
 
   arrayToString (array) {
-    console.log('array:', array);
     let result = '';
     for(let line of array) {
       result += line;
@@ -49,7 +48,7 @@ class Sort {
     return result;
   }
 
-  sortFile(file) {
+  sortEmails(file) {
     return this.arrayToString(this.alphabet(this.fileToArray(file)))
   }
 

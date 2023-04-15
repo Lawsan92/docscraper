@@ -21,7 +21,8 @@ test('alphabetizes email addresses', () => {
     'ngossage5@nydailynews.com,Female',
     'ljellico6@163.com,Female',
     'smazella7@guardian.co.uk,Male',
-    'bodoohaine8@shutterfly.com,Male']
+    'bodoohaine8@shutterfly.com,Male'
+  ];
   let result = [
     'adriuzzi1@dell.com,Female',
     'bodoohaine8@shutterfly.com,Male',
@@ -32,13 +33,11 @@ test('alphabetizes email addresses', () => {
     'ngossage5@nydailynews.com,Female',
     'qhowbrook4@networksolutions.com,Male',
     'smazella7@guardian.co.uk,Male'
-  ]
+  ];
   expect((sort.alphabet(emails))).toStrictEqual(result);
 });
 
 test('convert file to array, sort it then join the array into a string', () => {
   const sort = new Sort;
-  console.log('sort.sortFile(testFile):', sort.sortFile(testFile));
-  console.log('sortedFile:', sortedFile);
-  expect(sort.sortFile(testFile)).toStrictEqual(sortedFile);
+  expect(sort.sortEmails(testFile)).toEqual(sortedFile);
 })
