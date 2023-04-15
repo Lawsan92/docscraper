@@ -3,11 +3,23 @@ class Sort {
 
   }
 
-  alphabet(arr) {
+  fileToArray (file) {
+    let arr = [];
+    let line = '';
+    for (let i = 0; i < file.length; i ++) {
+      if (file[i] === '\n') {
+        arr.push(line);
+        line = '';
+      }
+    }
+    return arr;
+  }
+
+  alphabet (arr) {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let [pt, check] = [0, 0];
     for (let i = 0, j = i + 1; i < arr.length, j < arr.length + 1; i++, j++) {
-        if (j == arr.length) {
+      if (j == arr.length) {
         break;
       }
       let [str1, str2] = [arr[i], arr[j]];
@@ -24,10 +36,22 @@ class Sort {
         }
       pt = 0;
     }
-    console.log('arr:', arr);
+    // console.log('arr:', arr);
     return arr;
   }
 
+  arrayToString (array) {
+    console.log('array:', array);
+    let result = '';
+    for(let line of array) {
+      result += line;
+    }
+    return result;
+  }
+
+  sortFile(file) {
+    return this.arrayToString(this.alphabet(this.fileToArray(file)))
+  }
 
 }
 
