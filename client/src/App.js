@@ -15,6 +15,19 @@ export const Landing = ({ setLanding }) => {
 
 export const Options = ({ optionsClicked, handleClick, setOptions, configureParams, grepParams }) => {
 
+  const [isChecked, toggleRadio] = useState(false);
+  const handleRadio = (param, key) => {
+    console.log('key:', key)
+    toggleRadio((prevState )=> ({...isChecked, [key]:! prevState[key]}));
+    if (!isChecked[key]) {
+      configureParams({...grepParams, [param]: param});
+    } else {
+      configureParams(currentParams => {
+        delete currentParams.email;
+      });
+    }
+  }
+
   if (!optionsClicked) {
     return (
       <div className='scraper_options-closed' onClick={handleClick}>
@@ -28,25 +41,25 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
     <ul style={{listStyle: 'none'}}>
       <li>
         <label>
-          <input type='radio' value='email' onClick={(e) => {setOptions(e.target.value)}}/>
+          <input type='radio' value='email' data-id='1' className='email_radio' checked={isChecked['1']} onClick={(e) => { handleRadio(e.target.value, e.target['dataset']['id'])}}/>
           email
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='phone number' onClick={(e) => {setOptions(e.target.value)}}/>
+          <input type='radio' value='phone number' data-id='2' onClick={(e) => { handleRadio(e.target.value)}} />
           phone number
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='ip address'onClick={(e) => {setOptions(e.target.value)}}/>
+          <input type='radio' value='ip address' data-id='3'onClick={(e) => { handleRadio(e.target.value)}} />
           ip address
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='line numbers' onClick={(e) => {configureParams({...grepParams, ['line numbers']: true})}}/>
+          <input type='radio' value='line numbers' data-id='4' onClick={(e) => {configureParams({...grepParams, ['line numbers']: true})}}/>
           line numbers
         </label>
       </li>
@@ -118,7 +131,7 @@ export const App = () => {
   };
 
   const setOptions = (param) => {
-    configureParams({...grepParams, [param]: param})
+    configureParams({...grepParams, [param]: param});
   }
 
   if (landing) {
