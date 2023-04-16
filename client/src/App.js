@@ -16,15 +16,55 @@ export const Landing = ({ setLanding }) => {
 export const Options = ({ optionsClicked, handleClick, setOptions, configureParams, grepParams }) => {
 
   const [isChecked, toggleRadio] = useState(false);
+
   const handleRadio = (param, key) => {
-    console.log('key:', key)
     toggleRadio((prevState )=> ({...isChecked, [key]:! prevState[key]}));
     if (!isChecked[key]) {
-      configureParams({...grepParams, [param]: param});
+      if (param.slice(0, 4) === 'sort') {
+        configureParams(currentState => {
+          return {
+            ...currentState,
+            sort: {
+              ...currentState.sort,
+              [param.slice(5)]: true
+            }
+          }
+        });
+      } else {
+        // configureParams({...grepParams, [param]: param});
+        configureParams(currentState => {
+          return {
+            ...currentState,
+            param: {
+              ...currentState.param,
+              [param]: true
+            }
+          }
+        });
+      }
     } else {
-      configureParams(currentParams => {
-        delete currentParams.email;
-      });
+      if (param.slice(0, 4) === 'sort') {
+        configureParams(currentState => {
+          return {
+            ...currentState,
+            sort: {
+              ...currentState.sort,
+              [param.slice(5)]: false
+            }
+          }
+        });
+
+      } else {
+        configureParams(currentState => {
+          return {
+            ...currentState,
+            param: {
+              ...currentState.param,
+              [param]: false
+            }
+          }
+        });
+      }
     }
   }
 
@@ -41,26 +81,32 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
     <ul style={{listStyle: 'none'}}>
       <li>
         <label>
-          <input type='radio' value='email' data-id='1' className='email_radio' checked={isChecked['1']} onClick={(e) => { handleRadio(e.target.value, e.target['dataset']['id'])}}/>
+          <input type='radio' value='email' data-id='1' checked={isChecked['1']} onClick={(e) => { handleRadio(e.target.value, e.target['dataset']['id'])}}/>
           email
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='phone number' data-id='2' onClick={(e) => { handleRadio(e.target.value)}} />
+          <input type='radio' value='phone number' data-id='2' checked={isChecked['2']} onClick={(e) => { handleRadio(e.target.value,  e.target['dataset']['id'])}} />
           phone number
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='ip address' data-id='3'onClick={(e) => { handleRadio(e.target.value)}} />
+          <input type='radio' value='ip address' data-id='3'checked={isChecked['3']} onClick={(e) => { handleRadio(e.target.value,  e.target['dataset']['id'])}} />
           ip address
         </label>
       </li>
       <li>
         <label>
-          <input type='radio' value='line numbers' data-id='4' onClick={(e) => {configureParams({...grepParams, ['line numbers']: true})}}/>
+          <input type='radio' value='line numbers' data-id='4' checked={isChecked['4']} onClick={(e) => {handleRadio(e.target.value,  e.target['dataset']['id'])}} />
           line numbers
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type='radio' value='sort-alphabet' data-id='5' checked={isChecked['5']} onClick={(e) => {handleRadio(e.target.value,  e.target['dataset']['id'])}} />
+          sort? (alphabet)
         </label>
       </li>
     </ul>
@@ -76,7 +122,11 @@ export const App = () => {
   const [grepData, getGrep] = useState('');
   const [optionsClicked, openOptions] = useState(false);
   const [doc, getDoc] = useState('');
-  const [grepParams, configureParams] = useState({});
+  const [grepParams, configureParams] = useState({
+    sort: {
+
+    }
+  });
   const [landing, setLanding] = useState(true);
 
   useEffect(() => {
@@ -113,6 +163,7 @@ export const App = () => {
     reader.onload = (e) => {
       let fileContent = e.target.result;
       // console.log('fileContent:', fileContent, typeof fileContent);
+      // console.log('grepParams:', grepParams)
       axios({
         url: './grepFiles',
         method: 'post',
@@ -156,3 +207,8 @@ export const App = () => {
     );
   }
 }
+
+// REFERENCES
+// https://www.pluralsight.com/guides/how-to-access-custom-attributes-from-aevent-object-in-react
+// https://bobbyhadz.com/blog/react-remove-key-from-state-object
+// https://bobbyhadz.com/blog/react-update-nested-state-object-property

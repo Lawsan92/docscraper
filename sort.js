@@ -49,6 +49,7 @@ class Sort {
   }
 
   sortEmails(file) {
+    console.log('file:', file);
     return this.arrayToString(this.alphabet(this.fileToArray(file)))
   }
 
