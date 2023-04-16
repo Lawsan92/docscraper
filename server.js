@@ -16,6 +16,14 @@ app.get('/', (req, res) => {
   }
 });
 
+app.get('/test', async (req, res, next) => {
+  try {
+    await next(res.sendStatus(200));
+  } catch (err) {
+    await next(err);
+  }
+});
+
 app.get('/getFiles', (req, res) => {
   // getS3List()
   //   .then((data) => {
