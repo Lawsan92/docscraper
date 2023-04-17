@@ -3,16 +3,26 @@ const app = express();
 const axios = require('axios');
 
 test('-GET to /test should return OK', () => {
-  const request = axios({
-    method: 'get',
-    url: '/test'
-  })
-  .catch((err) => {
-    throw err;
-  })
-  .then((response) => {
-    console.log(response);
-  })
+  const request = async () => {
+    try {
+      await axios({
+        method: 'get',
+        url: '/test'
+      })
+    } catch (err) {
+      throw ('err');
+    }
+  }
+  // const request =  axios({
+  //   method: 'get',
+  //   url: '/test'
+  // })
+  // .catch((err) => {
+  //   throw err;
+  // })
+  // .then((response) => {
+  //   console.log(response);
+  // })
   expect(request).rejects.toMatch('err');
   expect(request).resolves.toBe('OK');
 });

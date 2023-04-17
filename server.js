@@ -38,31 +38,31 @@ app.get('/getFiles', (req, res) => {
 app.post('/grepFiles', (req, res) => {
 
   console.log('req.body.options:', req.body.options);
-  const [file, grepKey, hasNumberLines] = [req.body.data, '', req.body.options.param['line numbers']];
-  const paramKeys = req.body.options.param;
-  for (let key in paramKeys) {
-    if (paramKeys[key]) {
-      grepKey = key;
-    }
-  };
-  const result = GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]);
+  const [file, grepKey, hasNumberLines, sort] = [req.body.data, Object.keys(req.body.options.param)[0], req.body.options.param['line numbers'], req.body.options.sort.alphabet];
+  // const paramKeys = req.body.options.param;
+  // for (let key in paramKeys) {
+  //   if (paramKeys[key]) {
+  //     grepKey = key;
+  //   }
+  // };
+  // const result = GrepClass[grepKey](file, hasNumberLines);
   const log = console.log.bind(console);
   console.group('/---------------------------/')
-    log('hasNumberLines:', hasNumberLines);
     log('grepKey:', grepKey)
-    log('result:', result);
+    log('hasNumberLines:', hasNumberLines);
+    log('sort:', sort)
   console.groupEnd('/---------------------------/');
-  //  const sort = req.body.options.sort.alphabet;
+
   //  console.log('sort:', sort);
-  //  if (sort) {
-  //   console.log('GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]):', GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]));
-  //   console.log('DONE!!!')
-  //   const sortFile = new Sort;
-  //   res.send(sortFile.sortEmails(GrepClass[grepKey](file, Object.keys(req.body.options.param)[0])));
-  //  }
+   if (sort) {
+    // console.log('GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]):', GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]));
+    console.log('DONE!!!')
+    const sortFile = new Sort;
+    res.send(sortFile.sortEmails(GrepClass[grepKey](file, hasNumberLines)));
+   }
   // const result = GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]);
   // console
-   res.send(result);
+  //  res.send(result);
 })
 
 app.listen(3000, (err) => {
