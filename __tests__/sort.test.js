@@ -1,4 +1,4 @@
-const Sort = require('../../sort.js');
+const Sort = require('./sort.js');
 const { readFileSync } = require('fs');
 const testFile = readFileSync('./test2.txt', {encoding: 'utf8'});
 const sortedFile = readFileSync('./sorted.txt', {encoding: 'utf8'});
