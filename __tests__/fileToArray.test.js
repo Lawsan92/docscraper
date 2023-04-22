@@ -1,5 +1,5 @@
 const { readFileSync } = require('fs');
-const testFile = readFileSync('./test2.txt', {encoding: 'utf8'});
+const testFile = readFileSync('__tests__/data/test2.txt', {encoding: 'utf8'});
 
 test('should split a document into an array of strings', () => {
 

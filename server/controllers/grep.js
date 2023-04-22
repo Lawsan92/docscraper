@@ -1,5 +1,6 @@
 const { readFileSync } = require('fs');
-const testFile = readFileSync('./test.txt', {encoding: 'utf8'});
+const testFile = readFileSync('__tests__/data/test.txt', {encoding: 'utf8'});
+
 
 // console.log('testFile:', testFile);
 // console.log('emailGrep:', ...emailGrep)

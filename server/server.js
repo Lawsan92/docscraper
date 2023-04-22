@@ -1,6 +1,10 @@
 const express = require('express');
-const path = require('path');
 const app = express();
+
+require('dotenv').config();
+const path = require('path');
+const PORT = process.env.PORT || 3000;
+
 const getFiles = require('./routes/getFiles');
 const grepFiles = require('./routes/grepFiles');
 const test = require('./routes/test');
@@ -22,9 +26,13 @@ app.use('/getFiles', getFiles);
 app.use('/grepFiles', grepFiles);
 app.use('/test', test);
 
-app.listen(3000, (err) => {
+app.listen(PORT, (err) => {
   if (err) {
     throw err;
   }
-  console.log('listening to port 3000')
+  console.log(`listening to port ${PORT}`)
 });
+
+// REFERENCES
+
+// https://www.youtube.com/watch?v=iM_S4RczozU&ab_channel=SteveGriffith-Prof3ssorSt3v3

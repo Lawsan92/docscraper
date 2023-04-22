@@ -14,6 +14,13 @@ router.use((req, res, next) => {
 //--------------------ROUTES--------------------*/
 router
   .route('/')
+  .get( async (req, res) => {
+    try {
+      await res.sendStatus(200)
+    } catch(err) {
+      throw err;
+    }
+  })
   .post((req, res) => {
 
     console.log('req.body.options:', req.body.options);
@@ -38,10 +45,10 @@ router
       console.log('DONE!!!')
       const sortFile = new Sort;
       res.send(sortFile.sortEmails(GrepClass[grepKey](file, hasNumberLines)));
+     } else {
+      const result = GrepClass[grepKey](file, hasNumberLines);
+       res.send(result);
      }
-    // const result = GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]);
-    // console
-    //  res.send(result);
   })
 
 

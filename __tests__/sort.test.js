@@ -1,7 +1,7 @@
-const Sort = require('./sort.js');
+const Sort = require('../server/controllers/sort.js');
 const { readFileSync } = require('fs');
-const testFile = readFileSync('./test2.txt', {encoding: 'utf8'});
-const sortedFile = readFileSync('./sorted.txt', {encoding: 'utf8'});
+const testFile = readFileSync('__tests__/data/test2.txt', {encoding: 'utf8'});
+const sortedFile = readFileSync('__tests__/data/sorted.txt', {encoding: 'utf8'});
 
 test('alphabetizes strings', () => {
   const sort = new Sort;
