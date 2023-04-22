@@ -38,10 +38,10 @@ router
       console.log('DONE!!!')
       const sortFile = new Sort;
       res.send(sortFile.sortEmails(GrepClass[grepKey](file, hasNumberLines)));
+     } else {
+      const result = GrepClass[grepKey](file, hasNumberLines);
+      res.send(result);
      }
-    // const result = GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]);
-    // console
-    //  res.send(result);
   })
 
 

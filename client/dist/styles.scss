@@ -107,3 +107,23 @@ body{
   height: fit-content;
   width: fit-content;
 }
+
+// .scraper_options_email_input {
+//   display: flex;
+//   width: 10vw;
+// }
+
+.scraper_option_cell {
+  font-size: large;
+  margin: 0;
+  height: 3em;
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #fff;
+    color:rgba(49, 129, 176, 0.8)
+  }
+}
