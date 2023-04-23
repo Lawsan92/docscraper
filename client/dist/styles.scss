@@ -107,3 +107,43 @@ body{
   height: fit-content;
   width: fit-content;
 }
+
+// .scraper_options_email_input {
+//   display: flex;
+//   width: 10vw;
+// }
+
+.scraper_option_cell {
+  font-size: large;
+  margin: 0;
+  height: 3em;
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #fff;
+    color:rgba(49, 129, 176, 0.8)
+  }
+}
+
+.scraper_option_modal{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.25);
+  top: 0;
+  left: 0;
+}
+
+.scraper_option_modal_background {
+  border-radius: 1em;
+  height: 50vh;
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 1px 1px 20px -9px rgba(0,0,0,.57);
+}

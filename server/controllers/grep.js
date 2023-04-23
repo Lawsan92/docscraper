@@ -104,12 +104,21 @@ const matchNumbers = (file, lines) => {
 // };
 
 const GrepClass = {
-  'email': (file, lines) => {
+  'email': (file, lines, text) => {
+
+    let regEmail;
+
+    if (text) {
+      regEmail = new RegExp(`${text['0']}[a-zA-Z0-9_.]+@${text['1']}[a-zA-Z0-9_.]+.[${text['2']}]`, 'g');
+      console.log('regEmail:', regEmail)
+    } else {
+      regEmail = /\b[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+.[a-zA-Z0-9_.]+\b/g;
+    }
 
     if (typeof file === 'object') {
       file = file.data
     }
-    const regEmail = /\b[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+.[a-zA-Z0-9_.]+\b/g;
+
     const emailGrep = file.matchAll(regEmail);
 
     const print = () => {
@@ -127,6 +136,7 @@ const GrepClass = {
           list += line;
         }
       }
+      console.log('list:', list);
       return list;
     };
 
