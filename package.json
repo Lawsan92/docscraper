@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watch",
     "server": "nodemon server/server.js",
-    "bundle": "npx webpack --watch"
+    "start": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
   },
   "keywords": [],
   "author": "",
