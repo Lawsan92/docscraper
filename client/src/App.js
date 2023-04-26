@@ -187,7 +187,7 @@ export const App = () => {
       method: 'get'
     })
     .then((response) => {
-      // console.log('response:', response.data);
+      console.log('response:', response.data);
       const fileData = response.data;
       // getFile(fileData);
     })

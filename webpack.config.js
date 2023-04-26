@@ -25,10 +25,15 @@ const config = (env) => {
     },
     devServer: {
       static: path.join(__dirname, 'client/dist'),
+      proxy: {
+        '/getFiles': 'http://localhost:3000',
+        '/grepFiles': 'http://localhost:3000'
+      }
     }
   }
 }
 
-
 module.exports = config;
 
+// REFERENCES
+// https://webpack.js.org/configuration/dev-server/#devserverproxy
