@@ -6,15 +6,8 @@
   "scripts": {
     "test": "jest --watch",
     "server": "nodemon server/server.js",
-<<<<<<< HEAD
-    "start": "webpack --watch --env --mode=development",
-    "build": "webpack --env --mode=production",
-    "echo": "echo 'this is an echo'",
-    "grep": "grep -E -n --color \"\b[csc][a-zA-Z0-9_.]+@yahoo[a-zA-Z0-9._].[com|co]+\b\" ./__tests__/data/test.txt"
-=======
     "start": "webpack --watch --mode=development",
     "build": "webpack --mode=production"
->>>>>>> refs/remotes/origin/main
   },
   "keywords": [],
   "author": "",
