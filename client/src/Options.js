@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export const Options = ({ optionsClicked, handleClick, setOptions, configureParams, grepParams, handleModal, grepText, getText }) => {
 
   const [isChecked, toggleRadio] = useState(false);
-
+  const [isExpanded, setBar] = useState(false);
 
   const OptionBars = () => {
     let options = ['email', 'phone number', 'ip address', 'line numbers'];
@@ -21,7 +21,6 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
       </div>
     );
   }
-
 
   const handleRadio = (param, key) => {
     toggleRadio((prevState )=> ({...isChecked, [key]:! prevState[key]}));

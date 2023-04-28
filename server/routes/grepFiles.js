@@ -27,7 +27,7 @@ router
     const [file, grepKey, hasNumberLines, sort, text] = [
       req.body.data, Object.keys(req.body.options.param)[0],
       req.body.options.param['line numbers'],
-      req.body.options.sort.alphabet,
+      req.body.options.sort.alphabet || {},
       req.body.options.text || null
     ];
     // const paramKeys = req.body.options.param;

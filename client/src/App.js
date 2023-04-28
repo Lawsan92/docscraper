@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Options from './Options.js';
 import OptionModal from './OptionModal.js';
+import Landing from './Landing.js';
 const axios = require('axios');
+const fs = require('fs');
 import '../dist/styles.scss';
 
-export const Landing = ({ setLanding }) => {
-  return (
-    <div className='scraper_landing' onClick={() => {setLanding(false)}}>
-      <div className='scraper_landing-logo'>
-        <img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681251277/Screen_Shot_2023-04-11_at_17.07.44_haqpxe.jpg'style={{height: '40vh', borderRadius: '50%'}}/>
-        <h1 style={{color: '#ffce30'}}>DocuScraper</h1>
-      </div>
-    </div>
-  )
-}
+console.log("fs.readFileSync", fs.readFileSync);
 
 // export const OptionBars = () => {
 //   let options = ['email', 'phone number', 'ip address', 'line numbers'];
@@ -234,6 +227,19 @@ export const App = () => {
     setModal(prevState => !prevState);
   }
 
+  const handleDownload = () => {
+    let data = grepData;
+    writeFile('grepFile.txt', data, (err) => {
+      if (err) {
+        console.log('err:', err.stack)
+      } else {
+        console.log("File written successfully\n");
+        console.log("The written has the following contents:");
+        console.log(fs.readFileSync("books.txt", "utf8"));
+      }
+    })
+  }
+
   if (landing) {
     return <Landing setLanding={setLanding}/>
   } else {
@@ -251,12 +257,15 @@ export const App = () => {
           <input type="file" name="file" onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}}/>
           <button onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
           <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions} configureParams={configureParams} grepParams={grepParams} handleModal={handleModal} grepText={grepText} getText={getText}/>
+          <button onClick={handleDownload}>ReadFile</button>
         </div>
         {modalOpen && <OptionModal handleModal={handleModal}/> }
       </div>
     );
   }
 }
+
+export default App;
 
 // REFERENCES
 // https://www.pluralsight.com/guides/how-to-access-custom-attributes-from-aevent-object-in-react
