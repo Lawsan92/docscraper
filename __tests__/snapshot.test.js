@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer';
-import Landing from '../client/src/Landing.js';
+import { Landing, Options } from '../client/src/components.js';
 // import App from '../client/src/App.js';
 import React from 'react';
 import Component from '../component.js';
@@ -12,6 +12,14 @@ describe('DocuScraper UI', () => {
       .toJSON();
     console.log('landing:', landing);
     expect(landing).toMatchSnapshot();
+  });
+
+  test('it renders the <Options/> component correctly', () => {
+    const options = renderer
+      .create(<Options/>)
+      .toJSON();
+    console.log('options:', options);
+    expect(options).toMatchSnapshot();
   });
 
   // test('it renders the <App/> component correctly', () => {

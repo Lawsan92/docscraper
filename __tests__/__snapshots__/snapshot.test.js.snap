@@ -30,6 +30,14 @@ exports[`DocuScraper UI it renders the <Landing/> component correctly 1`] = `
 </div>
 `;
 
+exports[`DocuScraper UI it renders the <Options/> component correctly 1`] = `
+<div
+  className="scraper_options-closed"
+>
+  Options
+</div>
+`;
+
 exports[`DocuScraper UI it renders the <component/> component correctly 1`] = `
 <div>
   COMPONENT
