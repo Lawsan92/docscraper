@@ -53,6 +53,71 @@ npm run build
 npm run dev
 ```
 
+* runs all jest tests
+
+```
+$ npm test
+```
+
+* resets project repo by removing all bundle files and node_modules ! use in case there are dependency conflicts in webpack
+
+```
+$ npm run reset
+```
+
+* prints a tree of the file structure of the repo if you need to find a file
+
+```
+$ npm run printDir
+```
+
+```
+./
+├── AWS.config.json
+├── README.md
+├── __tests__
+│   ├── __snapshots__
+│   │   └── snapshot.test.js.snap
+│   ├── api.test.js
+│   ├── data
+│   │   ├── sorted.txt
+│   │   ├── test.txt
+│   │   └── test2.txt
+│   ├── fileToArray.test.js
+│   ├── snapshot.test.js
+│   └── sort.test.js
+├── babel.config.json
+├── client
+│   ├── dist
+│   │   ├── bundle.js
+│   │   ├── bundle.js.LICENSE.txt
+│   │   ├── index.html
+│   │   ├── styles.css
+│   │   └── styles.scss
+│   └── src
+│       ├── App.js
+│       ├── Landing.js
+│       ├── OptionModal.js
+│       ├── Options.js
+│       ├── components.js
+│       └── index.js
+├── component.js
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── server
+│   ├── controllers
+│   │   ├── AWS.js
+│   │   ├── grep.js
+│   │   └── sort.js
+│   ├── routes
+│   │   ├── getFiles.js
+│   │   ├── grepFiles.js
+│   │   └── test.js
+│   └── server.js
+└── webpack.config.js
+
+```
 
 
 
