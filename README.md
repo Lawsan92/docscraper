@@ -1,5 +1,5 @@
 # DocuScraper
-<img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681252199/Screen_Shot_2023-04-11_at_17.29.48_fsogak.jpg'/>
+<img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681252199/projects%20gallery/Docuscraper/Screen_Shot_2023-04-11_at_17.29.48_fsogak.jpg'/>
 
 ## About
 <p>This is a document scraper modeled after the `grep` command used in the linux os cli. It compares the file content from upload user files to regex patterns, declared as either RegExp objects 
