@@ -1,4 +1,5 @@
 node_modules
-config.json
+*.config.json
 .env
 package-lock.json
+babel.config.json
