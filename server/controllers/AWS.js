@@ -2,7 +2,7 @@ const { S3Client, GetObjectCommand, ListObjectsV2Command } = require('@aws-sdk/c
 const AWS = require('aws-sdk');
 
 // retrieve AWS IAM credentials
-const credentials = AWS.config.loadFromPath('./config.json');
+const credentials = AWS.config.loadFromPath('./AWS.config.json');
 const config = (credentials);
 
 // instantiate new S3 Client
