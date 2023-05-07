@@ -38,19 +38,19 @@ let regEmail = /\b[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+.[a-zA-Z0-9_.]+\b/g;
 * creates a development bundle that's served to the browser
 
 ```
-$ npm start
+npm start
 ```
 
 * creates a production bundle that compresses file content to maximize perfomance
 
 ```
-$ npm run build
+npm run build
 ```
 
 * create a development bundle that runs in the webpack-dev-server, a private server that allows automatic rerendering browser when updating code without the need to refresh the page manually
 
 ```
-$ npm run dev
+npm run dev
 ```
 
 * runs all jest tests
@@ -59,7 +59,7 @@ $ npm run dev
 $ npm test
 ```
 
-* resets project repo by removing all bundle files and node_modules ! use in case there are dependency conflicts in webpack 
+* resets project repo by removing all bundle files and node_modules ! use in case there are dependency conflicts in webpack
 
 ```
 $ npm run reset

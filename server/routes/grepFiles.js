@@ -25,18 +25,13 @@ router
 
     console.log('req.body.options:', req.body.options);
     const [file, grepKey, hasNumberLines, sort, text] = [
-      req.body.data, Object.keys(req.body.options.param)[0],
+      req.body.data,
+      Object.keys(req.body.options.param)[0] || null,
       req.body.options.param['line numbers'],
-      req.body.options.sort.alphabet || {},
+      req.body.options.sort ? req.body.options.sort.alphabet : null,
       req.body.options.text || null
     ];
-    // const paramKeys = req.body.options.param;
-    // for (let key in paramKeys) {
-    //   if (paramKeys[key]) {
-    //     grepKey = key;
-    //   }
-    // };
-    // const result = GrepClass[grepKey](file, hasNumberLines);
+
     const log = console.log.bind(console);
     console.group('/---------------------------/')
       log('grepKey:', grepKey)
@@ -45,9 +40,7 @@ router
       log('text:', text)
     console.groupEnd('/---------------------------/');
 
-    //  console.log('sort:', sort);
      if (sort) {
-      // console.log('GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]):', GrepClass[grepKey](file, Object.keys(req.body.options.param)[0]));
       console.log('DONE!!!')
       const sortFile = new Sort;
       res.send(sortFile.sortEmails(GrepClass[grepKey](file, hasNumberLines, text)));
