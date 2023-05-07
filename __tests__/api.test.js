@@ -3,7 +3,7 @@ const { readFileSync } = require('fs');
 const path = require('path');
 const log = process.argv[process.argv.length - 1] === '-log'; // jest __tests__/api.test.js -log
 
-console.log('process.argv:', process.argv, 'process.argv[process.argv.length - 1:', process.argv[process.argv.length - 1]);
+log && console.log('process.argv:', process.argv, 'process.argv[process.argv.length - 1:', process.argv[process.argv.length - 1]);
 
 describe('portfolio API', () => {
 
@@ -49,7 +49,7 @@ describe('DocScraper API', () => {
         url: 'http://localhost:3000/test'
       });
       const data = await response.data
-      console.log('data:', data, 'received @', response.config.url);
+      log && console.log('data:', data, 'received @', response.config.url);
       expect(typeof data).toBe('string');
     } catch(e) {
       expect(e).toMatch('error');
@@ -170,4 +170,34 @@ describe('DocScraper API', () => {
     }
   })
 
+  test('should find a single email address from fileData using text input with -POST @ /grepFiles', async () => {
+    expect.assertions(1);
+    const file = readFileSync(path.join(__dirname, 'data/test3.txt'), {encoding: 'utf-8'});
+    try {
+      const response = await axios({
+        method: 'post',
+        url: 'http://localhost:3000/grepFiles',
+        data: {
+          data: file,
+          options: {
+            param: {
+              email: true
+            },
+            text: {
+              '0': 'csc',
+              '1': 'yahoo',
+              '2': 'com'
+            }
+          }
+        }
+      });
+      const data = await response.data
+      log && console.log('data:', data, 'received @', response.config.url);
+      expect(typeof data).toBe('string');
+    } catch(e) {
+      expect(e).toMatch('error');
+    }
+  })
+
 });
+

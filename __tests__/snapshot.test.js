@@ -3,6 +3,9 @@ import { Landing, Options } from '../client/src/components.js';
 // import App from '../client/src/App.js';
 import React from 'react';
 import Component from '../component.js';
+const log = process.argv[process.argv.length - 1] === '-log'; // jest __tests__/api.test.js -log
+
+log && console.log('process.argv:', process.argv, 'process.argv[process.argv.length - 1:', process.argv[process.argv.length - 1]);
 
 describe('DocuScraper UI', () => {
 
@@ -10,7 +13,7 @@ describe('DocuScraper UI', () => {
     const landing = renderer
       .create(<Landing/>)
       .toJSON();
-    console.log('landing:', landing);
+    log && console.log('landing:', landing);
     expect(landing).toMatchSnapshot();
   });
 
@@ -18,7 +21,7 @@ describe('DocuScraper UI', () => {
     const options = renderer
       .create(<Options/>)
       .toJSON();
-    console.log('options:', options);
+    log && console.log('options:', options);
     expect(options).toMatchSnapshot();
   });
 
@@ -26,7 +29,7 @@ describe('DocuScraper UI', () => {
   //   const app = renderer
   //     .create(<App/>)
   //     .toJSON();
-  //   console.log('app:', app);
+  //   log && console.log('app:', app);
   //   expect(app).toMatchSnapshot();
   // });
 
@@ -34,7 +37,7 @@ describe('DocuScraper UI', () => {
     const component = renderer
       .create(<Component/>)
       .toJSON();
-    console.log('component:', component);
+    log && console.log('component:', component);
     expect(component).toMatchSnapshot();
   });
 
