@@ -1,7 +1,4 @@
-const express = require('express');
-const app = express();
 const axios = require('axios');
-
 
 describe('portfolio API', () => {
   test('should return visits object from http://lawrence-sanzogni.com/visits ', async () => {
@@ -17,9 +14,25 @@ describe('portfolio API', () => {
       expect(e).toMatch('error');
     }
   })
-})
+});
 
 describe('DocScraper API', () => {
+
+  test('should return 200 status with -GET @ /test', async () => {
+    expect.assertions(1);
+    try {
+      const response = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/test'
+      });
+      const data = await response.data
+      console.log('data:', data, 'received @', response.config.url);
+      expect(typeof data).toBe('string');
+    } catch(e) {
+      expect(e).toMatch('error');
+    }
+  })
+
   test('should return fileData with -GET @ /getFiles', async () => {
     expect.assertions(1);
     try {
@@ -34,4 +47,5 @@ describe('DocScraper API', () => {
       expect(e).toMatch('error');
     }
   })
-})
+
+});
