@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DocuScraper UI it renders the <App/> component correctly 1`] = `
+<div
+  className="scraper_landing"
+  onClick={[Function]}
+>
+  <div
+    className="scraper_landing-logo"
+  >
+    <img
+      src="https://res.cloudinary.com/darp0mj9i/image/upload/v1681251277/Screen_Shot_2023-04-11_at_17.07.44_haqpxe.jpg"
+      style={
+        Object {
+          "borderRadius": "50%",
+          "height": "40vh",
+        }
+      }
+    />
+    <h1
+      style={
+        Object {
+          "color": "#ffce30",
+        }
+      }
+    >
+      DocuScraper
+    </h1>
+  </div>
+</div>
+`;
+
 exports[`DocuScraper UI it renders the <Landing/> component correctly 1`] = `
 <div
   className="scraper_landing"
