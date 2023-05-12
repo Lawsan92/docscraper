@@ -10,41 +10,77 @@ log && console.log('process.argv:', process.argv, 'process.argv[process.argv.len
 
 describe('DocuScraper UI', () => {
 
-  test('it renders the <Landing/> component correctly', () => {
-    const landing = renderer
-      .create(<Landing/>)
-      .toJSON();
-    log && console.log('landing:', landing);
-    expect(isElement(<Landing/>)).toBe(true)
-    expect(landing).toMatchSnapshot();
+  describe('<Landing/>', () => {
+
+    test('it should be recognized as a React element', () => {
+      log && console.log('<Landing/>:', <Landing/>);
+      expect(isElement(<Landing/>)).toBe(true)
+    });
+
+    test('it matches snapshot', () => {
+      const landing = renderer
+        .create(<Landing/>)
+        .toJSON();
+      log && console.log('landing:', landing);
+      expect(isElement(<Landing/>)).toBe(true)
+      expect(landing).toMatchSnapshot();
+    });
+
   });
 
-  test('it renders the <App/> component correctly', async () => {
-    try {
-      const app = renderer
-      .create(<App/>)
-      .toJSON();
-    log && console.log('app:', app);
-    expect(app).toMatchSnapshot();
-    } catch (e) {
-      expect(e).toMatch('error');
-    }
+  describe('<App/>', () => {
+
+    test('it should be recognized as a React element', () => {
+      log && console.log('<App/>:', <App/>);
+      expect(isElement(<App/>)).toBe(true)
+    });
+
+    test('it matches snapshot', async () => {
+      try {
+        const app = renderer
+        .create(<App/>)
+        .toJSON();
+      log && console.log('app:', app);
+      expect(app).toMatchSnapshot();
+      } catch (e) {
+        expect(e).toMatch('error');
+      }
+    });
+
   });
 
-  test('it renders the <Options/> component correctly', () => {
-    const options = renderer
-      .create(<Options/>)
-      .toJSON();
-    log && console.log('options:', options);
-    expect(options).toMatchSnapshot();
+  describe('<Options/>', () => {
+
+    test('it should be recognized as a React element', () => {
+      log && console.log('<Options/>:', <Options/>);
+      expect(isElement(<Options/>)).toBe(true)
+    });
+
+    test('it matches snapshot', () => {
+      const options = renderer
+        .create(<Options/>)
+        .toJSON();
+      log && console.log('options:', options);
+      expect(options).toMatchSnapshot();
+    });
+
   });
 
-  test('it renders the <component/> component correctly', () => {
-    const component = renderer
-      .create(<Component/>)
-      .toJSON();
-    log && console.log('component:', component);
-    expect(component).toMatchSnapshot();
+  describe('<Component/>', () => {
+
+    test('it should be recognized as a React element', () => {
+      log && console.log('<Component/>:', <Component/>);
+      expect(isElement(<Component/>)).toBe(true)
+    });
+
+    test('it matches snapshot', () => {
+      const component = renderer
+        .create(<Component/>)
+        .toJSON();
+      log && console.log('component:', component);
+      expect(component).toMatchSnapshot();
+    });
+
   });
 
 });

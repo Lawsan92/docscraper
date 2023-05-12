@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DocuScraper UI it renders the <App/> component correctly 1`] = `
+exports[`DocuScraper UI <App/> it matches snapshot 1`] = `
 <div
   className="scraper_landing"
   onClick={[Function]}
@@ -30,7 +30,13 @@ exports[`DocuScraper UI it renders the <App/> component correctly 1`] = `
 </div>
 `;
 
-exports[`DocuScraper UI it renders the <Landing/> component correctly 1`] = `
+exports[`DocuScraper UI <Component/> it matches snapshot 1`] = `
+<div>
+  COMPONENT
+</div>
+`;
+
+exports[`DocuScraper UI <Landing/> it matches snapshot 1`] = `
 <div
   className="scraper_landing"
   onClick={[Function]}
@@ -60,16 +66,10 @@ exports[`DocuScraper UI it renders the <Landing/> component correctly 1`] = `
 </div>
 `;
 
-exports[`DocuScraper UI it renders the <Options/> component correctly 1`] = `
+exports[`DocuScraper UI <Options/> it matches snapshot 1`] = `
 <div
   className="scraper_options-closed"
 >
   Options
-</div>
-`;
-
-exports[`DocuScraper UI it renders the <component/> component correctly 1`] = `
-<div>
-  COMPONENT
 </div>
 `;
