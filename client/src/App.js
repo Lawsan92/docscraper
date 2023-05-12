@@ -4,7 +4,7 @@ import OptionModal from './OptionModal.js';
 import Landing from './Landing.js';
 const axios = require('axios');
 // const fs = require('fs');
-// import '../dist/styles.scss';
+import '../dist/styles.scss';
 
 export const App = () => {
 
