@@ -72,13 +72,11 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
         });
       }
     }
-  }
+  };
 
   const renderOptions = () => {
     let count = 1;
-
-
-  }
+  };
 
   const handleText = (i, e) => {
     configureParams(currentState => {
@@ -90,7 +88,7 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
         }
       }
     });
-  }
+  };
 
   if (!optionsClicked) {
     return (

@@ -3,3 +3,5 @@ node_modules
 .env
 package-lock.json
 babel.config.json
+config/
+/client/dist/bundle.js

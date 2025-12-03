@@ -1,9 +1,15 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import renderer from 'react-test-renderer';
 import { Landing, Options } from '../client/src/components.js';
 import App from '../client/src/App.js';
 import React from 'react';
 import Component from '../component.js';
 import { isElement } from 'react-dom/test-utils';
+import { fireEvent, render, screen } from '@testing-library/react';
+
 const log = process.argv[process.argv.length - 1] === '-log'; // jest __tests__/api.test.js -log
 
 log && console.log('process.argv:', process.argv, 'process.argv[process.argv.length - 1:', process.argv[process.argv.length - 1]);
@@ -47,6 +53,16 @@ describe('DocuScraper UI', () => {
       }
     });
 
+    test('it should expand when logo is clicked', () => {
+      const { container } = render(<App/>);
+      const elementSizeBefore = container.getElementsByTagName('div');
+      expect(elementSizeBefore.length).toBe(2);
+      const logo = screen.getByRole('heading', {name: /DocuScraper/i});
+      fireEvent.click(logo);
+      const elementSizeAfter = container.getElementsByTagName('div');
+      expect(elementSizeAfter.length).toBe(6);
+    })
+
   });
 
   describe('<Options/>', () => {
@@ -84,4 +100,8 @@ describe('DocuScraper UI', () => {
   });
 
 });
+
+// REFERENCES
+  // https://bobbyhadz.com/blog/react-testing-library-find-by-classname
+  // https://www.youtube.com/watch?v=0Y11K7KSC80&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=11&ab_channel=TheNetNinja
 

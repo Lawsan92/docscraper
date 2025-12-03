@@ -10,7 +10,7 @@ const GrepClass = {
     let regEmail;
 
     if (text) {
-      regEmail = new RegExp(`${text['0']}[a-zA-Z0-9_.]+@${text['1']}[a-zA-Z0-9_.]+.[${text['2']}]`, 'g');
+      regEmail = new RegExp(`${text['0'] || ''}[a-zA-Z0-9_.]+@${text['1'] || ''}[a-zA-Z0-9_.]+.[${text['2'] || 'a-zA-Z0-9_.'}]`, 'g');
       console.log('regEmail:', regEmail)
     } else {
       regEmail = /\b[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+.[a-zA-Z0-9_.]+\b/g;
