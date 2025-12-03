@@ -16,7 +16,7 @@ let regEmail = /\b[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+.[a-zA-Z0-9_.]+\b/g;
 ```
 
 ## configure Regex params
-<img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681253492/Screen_Shot_2023-04-11_at_17.50.42_ufefwh.jpg'/>
+<img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681253492/projects%20gallery/Docuscraper/Screen_Shot_2023-04-11_at_17.50.42_ufefwh.jpg'/>
 
  ### email addresses
  <img src='https://res.cloudinary.com/darp0mj9i/image/upload/v1681253496/projects%20gallery/Docuscraper/Screen_Shot_2023-04-11_at_17.51.03_vpxmd3.jpg'/>
