@@ -9,7 +9,7 @@ import '../dist/styles.scss';
 export const App = () => {
 
   // STATE
-  const [file, getFile] = useState('');
+  const [file, getFile] = useState({});
   const [grepData, getGrep] = useState('');
   const [optionsClicked, openOptions] = useState(false);
   const [doc, getDoc] = useState('');
@@ -49,7 +49,7 @@ export const App = () => {
     const reader = new FileReader();
     reader.onload = (e) => {
       let fileContent = e.target.result;
-      getFile(fileContent);
+      getFile({'content': fileContent, 'name': file.name});
     };
     reader.readAsText(file);
   }
@@ -105,15 +105,19 @@ export const App = () => {
       <div className='scraper_container'>
         <div className='scraper_pages'>
           <div className='scraper_before-page'>
-            <p>{file}</p>
+            <p>{file.content}</p>
           </div>
           <div className='scraper_after-page'>
             <p style={{color: 'red'}}>{grepData}</p>
           </div>
         </div>
         <div className='scraper_dash'>
-          <input type="file" name="file" onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}}/>
-          <button onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
+          <span className='upload_container'>
+            <input type="file" name="file" id='upload_btn'onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}} style={{display: 'none'}}/>
+            <label for='upload_btn'>Upload file</label>
+          </span>
+          <p>{file.name && file.name}</p>
+          <button className='scraper_dash_upload_btn' onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
           <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions} configureParams={configureParams} grepParams={grepParams} handleModal={handleModal} grepText={grepText} getText={getText}/>
           {/* <button onClick={handleDownload}>ReadFile</button> */}
         </div>

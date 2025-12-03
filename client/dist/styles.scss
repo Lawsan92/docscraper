@@ -124,6 +124,39 @@ body{
   width: fit-content;
 }
 
+.scraper_options_close_button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  opacity: 0.5;
+  &:hover {
+    scale: 1.2;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+}
+
+.scraper_dash_upload_btn {
+  background: rgba(49, 129, 176, 0.8);;
+  color: #fff;
+  border: none;
+  opacity: 0.8;
+  padding: 1em;
+  border-radius: 50%;
+  height: 5em;
+  width: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+    scale: 1.2;
+    opacity: 1;
+  }
+}
+
 // .scraper_options_email_input {
 //   display: flex;
 //   width: 10vw;

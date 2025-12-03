@@ -139,7 +139,7 @@ export const Options = ({ optionsClicked, handleClick, setOptions, configurePara
       .
       <input type='text'data-id='2' onChange={(e) => {handleText(e.target['dataset']['id'], e.target.value)}} ></input>
      </div>
-    <button onClick={handleClick}>x</button>
+    <button className='scraper_options_close_button'onClick={handleClick}>x</button>
     {/* {OptionBars()} */}
   </div>
   );
