@@ -3,7 +3,7 @@ import Options from './Options.js';
 import OptionModal from './OptionModal.js';
 import Landing from './Landing.js';
 const axios = require('axios');
-// const fs = require('fs');
+const fs = require('fs');
 import '../dist/styles.scss';
 
 export const App = () => {
@@ -86,16 +86,13 @@ export const App = () => {
   }
 
   // const handleDownload = () => {
+
   //   let data = grepData;
-  //   writeFile('grepFile.txt', data, (err) => {
-  //     if (err) {
-  //       console.log('err:', err.stack)
-  //     } else {
-  //       console.log("File written successfully\n");
-  //       console.log("The written has the following contents:");
-  //       console.log(fs.readFileSync("books.txt", "utf8"));
-  //     }
-  //   })
+
+  //   fs.writeFile(`${file.name}_grepped.txt`, grepData, (err) => {
+  //           if (err) throw err;
+  //           console.log('File saved!');
+  //       });
   // }
 
   if (landing) {
@@ -112,14 +109,16 @@ export const App = () => {
           </div>
         </div>
         <div className='scraper_dash'>
-          <span className='upload_container'>
+          <span className='scraper_dash_el1'>
             <input type="file" name="file" id='upload_btn'onChange={(e) => { uploadFile(e); getDoc(e.target.files[0]);/*grepFile(e.target.files[0]);*/}} style={{display: 'none'}}/>
-            <label for='upload_btn'>Upload file</label>
+            <label for='upload_btn' className='scraper_dash_btn'>Upload file</label>
+            {file.name ? <p className='scraper_dash_upload_text'>{file.name} uploaded</p> : <p>select a file</p>}
           </span>
-          <p>{file.name && file.name}</p>
-          <button className='scraper_dash_upload_btn' onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
+          <span className='scraper_dash_el2'>
+            <button className='scraper_dash_btn' onClick={() => {grepFile(doc); configureParams({})}}>Filter</button>
+            {/* <button onClick={handleDownload}>ReadFile</button> */}
+          </span>
           <Options optionsClicked={optionsClicked} handleClick={handleClick} setOptions={setOptions} configureParams={configureParams} grepParams={grepParams} handleModal={handleModal} grepText={grepText} getText={getText}/>
-          {/* <button onClick={handleDownload}>ReadFile</button> */}
         </div>
         {modalOpen && <OptionModal handleModal={handleModal}/> }
       </div>

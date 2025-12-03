@@ -48,8 +48,8 @@ body{
 
 .scraper_before-page{
   background-color: #fff;
-  height: 70vh;
-  width: 400px;
+  aspect-ratio: 2/1;
+  width: 30vw;
   box-shadow: 1px 1px 20px -9px rgba(0,0,0,.57);
   display: flex;
   overflow-wrap: anywhere;
@@ -61,7 +61,7 @@ body{
 .scraper_after-page{
   background-color: #fff;
   height: 70vh;
-  width: 400px;
+  width: 30vw;
   box-shadow: 1px 1px 20px -9px rgba(0,0,0,.57);
   display: flex;
   overflow-wrap: anywhere;
@@ -130,23 +130,39 @@ body{
   color: #fff;
   font-size: 1.5em;
   opacity: 0.5;
+  height: fit-content;
   &:hover {
     scale: 1.2;
     cursor: pointer;
     opacity: 1;
-    transition: opacity 1s;
+    transition: 1s ease;
   }
 }
 
-.scraper_dash_upload_btn {
+.scraper_dash_el1 {
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+  & p {
+    margin: 1em
+  }
+}
+
+.scraper_dash_el2 {
+  display: flex;
+  justify-content: center;
+  width: 33vw;
+}
+
+.scraper_dash_btn {
   background: rgba(49, 129, 176, 0.8);;
   color: #fff;
   border: none;
   opacity: 0.8;
-  padding: 1em;
-  border-radius: 50%;
-  height: 5em;
+  font-size: 1em;
+  padding: .5em;
   width: 5em;
+  border-radius: .6em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +170,12 @@ body{
     cursor: pointer;
     scale: 1.2;
     opacity: 1;
+    transition: 1s ease;
   }
+}
+
+.scraper_dash_upload_text {
+  color: #269c26;
 }
 
 // .scraper_options_email_input {
